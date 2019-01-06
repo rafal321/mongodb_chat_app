@@ -19,8 +19,29 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function(err, db){
         sendStatus = function(s){
             socket.emit('status', s); //it's gonna emit the status
         }
-        //get chats from mongo collections
+        //get chats from mongo collections (mongodriver, see documentation)
+        chat.find().limit(50).sort({_id:1}).toArray(function(err, res){
+            if(err){
+                throw err;
+            }
+            //emit meesages
+            socket.emit('output', res);
+        });
+            //handle input event
+            socket.on('input', function(data){
+                let name = data.name;
+                let message = data.message;
+                //check for message and name
+                if(name == '' || message == ''){
+                    sendStatus('Please enter a name and message');
+                }else{
+                    //inser message into db
+                    chat.insert({name: name, message: message}, function(){
+                        client.emit('output', [data]);
+                        
+                    });
+                }
 
-
+            });
     });
 });
