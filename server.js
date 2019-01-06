@@ -38,10 +38,17 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function(err, db){
                     //inser message into db
                     chat.insert({name: name, message: message}, function(){
                         client.emit('output', [data]);
-                        
+
+                        //send status object
+                        sendStatus({
+                            message: 'Message Sent',
+                            clear: true
+                        });
+
                     });
                 }
 
             });
+            //
     });
 });
