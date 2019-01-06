@@ -12,6 +12,8 @@ https://www.youtube.com/watch?v=FwMwO8pXfq0
 npm init >> to create package.json file
 npm install mongodb socket.io --save (save will add them to package.json file)
 
+server.js >> reate entry file manually
+
 
 #resources 
 https://github.com/mongodb/node-mongodb-native
