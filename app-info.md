@@ -8,6 +8,7 @@ https://www.youtube.com/watch?v=FwMwO8pXfq0
 
 
 ## ==============================================
+npm start - to run
 
 npm init >> to create package.json file
 npm install mongodb socket.io --save (save will add them to package.json file)
