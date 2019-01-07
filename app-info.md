@@ -14,6 +14,16 @@ npm install mongodb socket.io --save (save will add them to package.json file)
 
 server.js >> reate entry file manually
 
+        //let chat = db.collection('chats'); =================== ERROR HERE!!!!!
+        let chat = db.db('mongochat').collection('chats');
+
+as well as in server.js:  use mongodb 2.2.30
+"dependencies": {
+    "mongodb": "^2.2.33",
+    "npm": "^6.5.0",
+    "socket.io": "^2.2.0"
+  }
+
 
 #resources 
 https://github.com/mongodb/node-mongodb-native
